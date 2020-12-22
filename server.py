@@ -14,5 +14,9 @@ def echo(received):
 def get_status(machine):
     return 'No idea about status of the %s, this is just a method stub' % machine
 
+@app.route('/')
+def serve_static():
+    return app.send_static_file('index.html')
+
 if __name__ == '__main__':
    app.run()
