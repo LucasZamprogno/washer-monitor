@@ -7,7 +7,6 @@ class MockSensor(SensorInterface):
         self.state = State.INACTIVE
 
     def get_state(self):
-        print('Polled, responding %s' % self.state)
         return self.state
 
     def force_state(self, state):
