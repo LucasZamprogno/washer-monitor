@@ -23,7 +23,10 @@ class StatusManager(Thread):
         self.sensor = MockSensor()
 
     def get_state(self):
-        return self.current_state
+        return {
+            "status": self.current_state.value, # A bit gross using enum values directly but works fine here
+            "duration": self.timings[self.current_state]
+        }
 
     def run(self):
         while(True):

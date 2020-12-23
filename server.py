@@ -3,12 +3,21 @@ from StatusManager import StatusManager
 from State import State
 
 app = Flask(__name__)
-sm = StatusManager()
-sm.start()
+sm_washer = StatusManager()
+sm_dryer = StatusManager()
+sm_washer.start()
+sm_dryer.start()
 
 @app.route('/echo/<received>', methods=['GET'])
 def echo(received):
    return received + " ... " + received
+
+@app.route('/status', methods=['GET'])
+def get_statuses():
+    return {
+       "washer": sm_washer.get_state(), 
+       "dryer": sm_dryer.get_state()
+    }
 
 @app.route('/status/<machine>', methods=['GET'])
 def get_status(machine):

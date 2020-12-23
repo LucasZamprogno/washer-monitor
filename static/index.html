@@ -1,12 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<script src="js/index.js"></script>
-	<link rel="stylesheet" href="css/index.css">
+	<title>Washer/Dryer Status</title>
+	<script src="static/js/lib/jquery-3.4.1.min.js"></script>
+	<script src="static/js/index.js"></script>
+	<link rel="stylesheet" href="static/css/index.css">
 </head>
 <body>
 
-<h1>Heading</h1>
+<h1 id="washer-header">
+	Washer status: 
+	<span id="washer-status">Unknown</span>
+	 for 
+	 <span id="washer-duration">Unknown</span>
+</h1>
+<h1 id="dryer-header">
+	Dryer status: 
+	<span id="dryer-status">Unknown</span>
+	 for 
+	 <span id="dryer-duration">Unknown</span>
+</h1>
 
 </body>
 </html> 
