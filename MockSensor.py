@@ -4,7 +4,7 @@ import random
 
 class MockSensor(SensorInterface):
     def __init__(self):
-        self.state = State.INACTIVE
+        self.state = State.STOPPED
 
     def get_state(self):
         return self.state
