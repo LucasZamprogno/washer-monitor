@@ -28,7 +28,7 @@ class TestStringMethods(unittest.TestCase):
         sw420.start()
         print("Wiggle! (3s)")
         time.sleep(3)
-        self.assertEqual(sw420.get_state(), State.STOPPED)
+        self.assertEqual(sw420.get_state(), State.RUNNING)
         sw420.stop()
 
 
