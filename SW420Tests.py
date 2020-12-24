@@ -15,7 +15,7 @@ class TestStringMethods(unittest.TestCase):
     def tearDown(self):
         print("ending %s" % self._testMethodName)
 
-    def test_stopped(self):
+    def test_1_stopped(self):
         sw420 = SW420(4)
         sw420.start()
         print("Don't touch! (3s)")
@@ -23,7 +23,7 @@ class TestStringMethods(unittest.TestCase):
         self.assertEqual(sw420.get_state(), State.STOPPED)
         sw420.stop()
 
-    def test_running(self):
+    def test_2_running(self):
         sw420 = SW420(4)
         sw420.start()
         print("Wiggle! (3s)")
