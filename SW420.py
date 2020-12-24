@@ -9,6 +9,7 @@ class SW420(Thread, SensorInterface):
     def __init__(self, channel):
         super(SW420, self).__init__()
         super().setDaemon(True)
+        self.channel = channel
         self.stop_thread = False
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(channel, GPIO.IN)
@@ -36,3 +37,4 @@ class SW420(Thread, SensorInterface):
 
     def stop(self):
         self.stop_thread = True
+        GPIO.cleanup(self.channel) # Only really used for tests
