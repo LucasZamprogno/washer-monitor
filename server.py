@@ -5,10 +5,10 @@ from State import State
 app = Flask(__name__)
 # Only have one sensor hooked up right now
 sm_washer = StatusManager(4)
-#sm_dryer = StatusManager()
-sm_dryer = sm_washer
+sm_dryer = StatusManager(17)
+#sm_dryer = sm_washer
 sm_washer.start()
-#sm_dryer.start()
+sm_dryer.start()
 
 @app.route('/echo/<received>', methods=['GET'])
 def echo(received):
