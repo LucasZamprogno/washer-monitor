@@ -2,11 +2,12 @@ from threading import Thread
 from time import sleep
 from MockSensor import MockSensor
 from State import State, StateUtils
+from SW420 import SW420
 import random
 
 class StatusManager(Thread):
 
-    def __init__(self):
+    def __init__(self, channel):
         super(StatusManager, self).__init__()
         super().setDaemon(True)
         self.stop_thread = False
@@ -16,7 +17,10 @@ class StatusManager(Thread):
             State.RUNNING: 0,
             State.STOPPED: 0
         }
-        self.sensor = MockSensor()
+        if channel == -1:
+            self.sensor = MockSensor()
+        else:
+            self.sensor = SW420(channel)
         self.sensor.start()
 
     def get_state(self):
