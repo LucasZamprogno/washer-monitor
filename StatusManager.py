@@ -17,6 +17,7 @@ class StatusManager(Thread):
             State.STOPPED: 0
         }
         self.sensor = MockSensor()
+        self.sensor.start()
 
     def get_state(self):
         return {
