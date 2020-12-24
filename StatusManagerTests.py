@@ -1,7 +1,7 @@
 import unittest
 import time
-from StatusManager import StatusManager, get_alt_state
-from State import State
+from StatusManager import StatusManager
+from State import State, StateUtils
 
 class TestStringMethods(unittest.TestCase):
     def setUp(self):
@@ -11,8 +11,8 @@ class TestStringMethods(unittest.TestCase):
         print("ending %s" % self._testMethodName)
 
     def test_get_alt_state(self):
-        self.assertEqual(get_alt_state(State.RUNNING), State.STOPPED)
-        self.assertEqual(get_alt_state(State.STOPPED), State.RUNNING)
+        self.assertEqual(StateUtils.get_alt_state(State.RUNNING), State.STOPPED)
+        self.assertEqual(StateUtils.get_alt_state(State.STOPPED), State.RUNNING)
 
     def test_sm_default_state(self):
         sm = StatusManager()
