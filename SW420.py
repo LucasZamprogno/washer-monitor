@@ -13,9 +13,8 @@ class SW420(Thread, SensorInterface):
         self.stop_thread = False
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(channel, GPIO.IN)
-        home = self # Is this necessary in python vs JS?
         def callback(channel):
-            home.next_state = State.RUNNING
+            self.next_state = State.RUNNING
 
         GPIO.add_event_detect(channel, GPIO.BOTH, bouncetime=200)
         GPIO.add_event_callback(channel, callback)

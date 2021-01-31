@@ -7,9 +7,10 @@ import random
 
 class StatusManager(Thread):
 
-    def __init__(self, channel):
+    def __init__(self, sensor):
         super(StatusManager, self).__init__()
         super().setDaemon(True)
+        self.sensor = sensor
         self.stop_thread = False
         self.current_state = State.STOPPED
         self.activity_threshold = 30
@@ -17,10 +18,6 @@ class StatusManager(Thread):
             State.RUNNING: 0,
             State.STOPPED: 0
         }
-        if channel == -1:
-            self.sensor = MockSensor()
-        else:
-            self.sensor = SW420(channel)
         self.sensor.start()
 
     def get_state(self):
@@ -40,7 +37,7 @@ class StatusManager(Thread):
     def update_state(self):
         sensor_state = self.sensor.get_state()
         alt_state = StateUtils.get_alt_state(self.current_state)
-        self.timings[self.current_state] += 1 # Assuming current state continues
+        self.timings[self.current_state] += 1 # Assume current state continues
         if sensor_state == alt_state:
             self.timings[alt_state] += 1
             if self.timings[alt_state] > self.activity_threshold:

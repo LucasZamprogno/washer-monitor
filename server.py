@@ -1,12 +1,12 @@
 from flask import Flask, json
 from StatusManager import StatusManager
 from State import State
+from SW420 import SW420
 
 app = Flask(__name__)
-# Only have one sensor hooked up right now
-sm_washer = StatusManager(4)
-sm_dryer = StatusManager(17)
-#sm_dryer = sm_washer
+# Using GPIO pin numbers http://raspi.tv/wp-content/uploads/2014/07/Raspberry-Pi-GPIO-pinouts.png
+sm_washer = StatusManager(SW420(4))
+sm_dryer = StatusManager(SW420(17))
 sm_washer.start()
 sm_dryer.start()
 
@@ -21,9 +21,13 @@ def get_statuses():
        "dryer": sm_dryer.get_state()
     }
 
-@app.route('/status/<machine>', methods=['GET'])
-def get_status(machine):
-    return 'No idea about status of the %s, this is just a method stub' % machine
+@app.route('/status/washer', methods=['GET'])
+def get_washer():
+    return sm_washer.get_state()
+
+@app.route('/status/dryer>', methods=['GET'])
+def get_dryer():
+    return sm_dryer.get_state()
 
 @app.route('/')
 def serve_static():
