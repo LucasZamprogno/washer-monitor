@@ -6,8 +6,10 @@ from sensors.MockSensor import MockSensor
 
 app = Flask(__name__)
 # Using GPIO pin numbers http://raspi.tv/wp-content/uploads/2014/07/Raspberry-Pi-GPIO-pinouts.png
-sm_washer = StatusManager(SW420(4))
-sm_dryer = StatusManager(SW420(17))
+washer_sensor = SW420(4)
+dryer_sensor = SW420(17)
+sm_washer = StatusManager(washer_sensor)
+sm_dryer = StatusManager(dryer_sensor)
 sm_washer.start()
 sm_dryer.start()
 
