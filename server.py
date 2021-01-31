@@ -1,7 +1,8 @@
 from flask import Flask, json
 from StatusManager import StatusManager
-from State import State
-from SW420 import SW420
+from sensors.State import State
+from sensors.SW420 import SW420
+from sensors.MockSensor import MockSensor
 
 app = Flask(__name__)
 # Using GPIO pin numbers http://raspi.tv/wp-content/uploads/2014/07/Raspberry-Pi-GPIO-pinouts.png
@@ -25,7 +26,7 @@ def get_statuses():
 def get_washer():
     return sm_washer.get_state()
 
-@app.route('/status/dryer>', methods=['GET'])
+@app.route('/status/dryer', methods=['GET'])
 def get_dryer():
     return sm_dryer.get_state()
 

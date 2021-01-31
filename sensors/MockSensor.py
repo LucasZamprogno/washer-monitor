@@ -1,8 +1,8 @@
-from SensorInterface import SensorInterface
 from threading import Thread
-from State import State
 from time import sleep
 import random
+from sensors.State import State
+from sensors.SensorInterface import SensorInterface
 
 class MockSensor(Thread, SensorInterface):
     def __init__(self):

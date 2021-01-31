@@ -1,8 +1,8 @@
 from threading import Thread
 from time import sleep
-from MockSensor import MockSensor
-from State import State, StateUtils
-from SW420 import SW420
+from sensors.State import State, StateUtils
+from sensors.MockSensor import MockSensor
+from sensors.SW420 import SW420
 import random
 
 class StatusManager(Thread):

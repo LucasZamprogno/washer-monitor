@@ -1,7 +1,7 @@
 import unittest
 import time
-from SW420 import SW420
-from State import State, StateUtils
+from sensors.SW420 import SW420
+from sensors.State import State, StateUtils
 
 class TestStringMethods(unittest.TestCase):
     '''

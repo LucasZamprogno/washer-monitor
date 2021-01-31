@@ -1,8 +1,8 @@
 import RPi.GPIO as GPIO
-from SensorInterface import SensorInterface
 from threading import Thread
 from time import sleep
-from State import State
+from sensors.SensorInterface import SensorInterface
+from sensors.State import State
 
 class SW420(Thread, SensorInterface):
 
